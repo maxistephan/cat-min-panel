@@ -16,7 +16,7 @@ services:
       - RCON_PASSWORD_FILE=/run/secrets/rcon_password
       - RCON_HOST=0.0.0.0
       - RCON_PORT=25575
-      - MC_CONTAINER=0.0.0.0
+      - MC_CONTAINER=minecraft-server
     secrets:
       - panel_token
       - rcon_password

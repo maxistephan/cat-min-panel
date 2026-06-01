@@ -28,7 +28,7 @@
 services:
   ################
   # CATmin Panel #
-  ###########iiii#
+  ################
   mc-panel:
     image: ghcr.io/maxistephan/cat-min-panel:latest
     container_name: catmin-panel
@@ -42,7 +42,7 @@ services:
       - RCON_PASSWORD_FILE=/run/secrets/rcon_password
       - RCON_HOST=0.0.0.0
       - RCON_PORT=25575
-      - MC_CONTAINER=0.0.0.0
+      - MC_CONTAINER=minecraft-server  # in case you named your docker container "minecraft-server"
     secrets:
       - panel_token
       - rcon_password
