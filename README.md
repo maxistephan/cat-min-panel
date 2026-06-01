@@ -3,6 +3,25 @@
 > A lightweight self-hosted web panel for managing a Minecraft server running in Docker.
 > Built with Flask, plain HTML/CSS/JS, and a Sanrio-inspired aesthetic.
 
+![Status](https://img.shields.io/badge/status-early%20development-orange) ![License](https://img.shields.io/badge/license-GPL--2.0-pink)
+
+![Preview](docs/webpage.png)
+
+## :warning: Disclaimer
+
+**This project is only a quick (but pretty) control panel and is not production-ready.**
+ 
+Known limitations and risks:
+ 
+- The codebase has not been audited for security vulnerabilities
+- The RCON command endpoint only performs basic input sanitisation
+- The log streaming endpoint authenticates via a URL query parameter, exposing the token in server logs and browser history
+- No rate limiting is implemented on any endpoint
+- Docker socket access grants the container significant control over the host
+**Use at your own risk.** Do not expose this panel to the public internet without additional hardening (e.g. VPN, IP allowlist, or Traefik middleware). It is intended for use on a trusted private network or behind authentication you control.
+ 
+If you discover a vulnerability, please open an issue rather than a pull request.
+
 ## Features
 
 - Live server status (running / exited / failed) with animated pulse indicator
