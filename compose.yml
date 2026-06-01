@@ -1,0 +1,37 @@
+services:
+  ############
+  # MC Panel #
+  ############
+  mc-panel:
+    build:
+      context: .
+    container_name: mc-panel
+    restart: on-failure:10
+    ports:
+      - 5000:5000/tcp
+    environment:
+      - TZ=Europe/Berlin
+      - PANEL_TOKEN_FILE=/run/secrets/panel_token
+      - MC_SERVICE=mc-server.service
+      - RCON_PASSWORD_FILE=/run/secrets/rcon_password
+      - RCON_HOST=0.0.0.0
+      - RCON_PORT=25575
+      - MC_CONTAINER=0.0.0.0
+    secrets:
+      - panel_token
+      - rcon_password
+    volumes:
+      # Needed so the panel can call systemctl on the host
+      - /run/systemd/private:/run/systemd/private:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /var/run/dbus/system_bus_socket:/var/run/dbus/system_bus_socket
+      - ./app/:/app
+    # Run as root so sudo systemctl works; lock down with PANEL_TOKEN instead
+    privileged: true
+
+secrets:
+  panel_token:
+    file: ./secrets/panel_token
+  rcon_password:
+    file: ./secrets/rcon_password
+
