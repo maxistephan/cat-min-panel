@@ -215,7 +215,7 @@ function sendCommand() {
   apiFetch('/api/command', { method: 'POST', body: JSON.stringify({ command: cmd }) })
     .then(r => r.json())
     .then(data => { out.textContent = data.output || '(no output)'; input.value = ''; })
-    .catch(() => { out.textContent = '(\u256D\u255F_\u255F\u256E) something went wrong'; });
+    .catch(() => { out.textContent = '(T⌓T) something went wrong'; });
 }
 
 document.getElementById('cmd-input').addEventListener('keydown', e => {
