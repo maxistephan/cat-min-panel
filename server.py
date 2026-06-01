@@ -170,6 +170,11 @@ def index():
     return send_from_directory("static", "index.html")
 
 
+@app.route("/resources/<path:filename>")
+def resources(filename):
+    return send_from_directory("static", filename)
+
+
 @app.route("/api/status")
 @require_token
 def status():
