@@ -299,7 +299,7 @@
   .log-box::-webkit-scrollbar-track { background: transparent; }
   .log-box::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
   .log-box.tall { max-height: 400px; }
-  .log-box:empty::before { content: '(. .) no logs yet~'; color: var(--muted); font-style: italic; }
+  .log-box:empty::before { content: '(\00B4\25CF \03C9 \25CF`) no logs yet~'; color: var(--muted); font-style: italic; }
   .log-line { display: block; }
   .log-line.done { color: var(--ok); font-weight: 500; }
   .log-line.err  { color: var(--danger); font-weight: 500; }
@@ -519,7 +519,7 @@
       <button class="btn-danger" id="btn-restart-now" onclick="confirmRestartNow()">&#9889; Restart Now</button>
     </div>
     <div id="restart-status" style="margin-top:14px;font-size:0.72rem;color:var(--muted);display:none">
-       restart sequence in progress... &#9825;
+       &#8987; restart sequence in progress... &#9825;
     </div>
   </div>
 
@@ -606,7 +606,7 @@
         startPolling();
       })
       .catch(() => {
-        document.getElementById('token-error').textContent = '(T_T) invalid token, try again!';
+        document.getElementById('token-error').textContent = '(\u256D\u255F_\u255F\u256E) invalid token, try again!';
         TOKEN = '';
       });
   }
@@ -744,7 +744,7 @@
     apiFetch('/api/command', { method: 'POST', body: JSON.stringify({ command: cmd }) })
       .then(r => r.json())
       .then(data => { out.textContent = data.output || '(no output)'; input.value = ''; })
-      .catch(() => { out.textContent = '(T_T) something went wrong'; });
+      .catch(() => { out.textContent = '(\u256D\u255F_\u255F\u256E) something went wrong'; });
   }
 
   document.getElementById('cmd-input').addEventListener('keydown', e => {
